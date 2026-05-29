@@ -1,0 +1,12 @@
+{
+  "name": "McCallum Media Group",
+  "short_name": "McCallum",
+  "description": "Cinematic studio & creative systems — McCallum Media Group.",
+  "icons": [
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/app-tile-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "theme_color": "#0A0A08",
+  "background_color": "#0A0A08",
+  "display": "standalone"
+}

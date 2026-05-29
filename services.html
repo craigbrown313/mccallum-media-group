@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Services — McCallum Media Group</title>
+<meta name="description" content="Social content systems, production & post, B-roll, sound design, AI media workflows, and brand films — for businesses ready to scale how they show up."/>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+/* ── PATH CARDS ── */
+.path-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border); }
+.path-card {
+  padding: 3.5rem 2.5rem; border-right: 1px solid var(--border);
+  position: relative; overflow: hidden; transition: background .4s;
+}
+.path-card:last-child { border-right: none; }
+.path-card::before {
+  content:''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent,var(--teal));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.path-card:hover::before { transform: scaleX(1); }
+.path-card:hover { background: var(--bg3); }
+.path-num { font-family: var(--disp); font-size: 3rem; color: var(--border); position: absolute; top: .5rem; right: 1.25rem; line-height: 1; transition: color .4s; }
+.path-card:hover .path-num { color: #2A2D27; }
+.path-name { font-family: var(--disp); font-size: 1.85rem; letter-spacing: .04em; margin-bottom: 1rem; line-height: 1; color: var(--fg); }
+.path-tagline { font-family: var(--serif); font-style: italic; color: var(--accent,var(--teal)); font-size: 1rem; font-weight: 300; margin-bottom: 1.25rem; }
+.path-desc { font-size: .8rem; color: var(--dim); line-height: 1.9; margin-bottom: 1.75rem; }
+.path-list { list-style: none; }
+.path-list li { font-size: .75rem; color: var(--muted); padding: .4rem 0; border-bottom: 1px solid var(--border2); display: flex; align-items: center; gap: .6rem; }
+.path-list li:last-child { border-bottom: none; }
+.path-list li::before { content:''; display:block; width:16px; height:1px; background:var(--accent,var(--teal)); opacity:.55; flex-shrink:0; }
+
+/* ── B-ROLL CALLOUT ── */
+.broll-feature {
+  display:grid; grid-template-columns: 1.1fr 1fr; gap: 4rem;
+  align-items: center;
+  padding: 6rem 6%;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.broll-feature-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:flex; align-items:center; gap:.7rem; }
+.broll-feature-eye::before { content:''; display:block; width:22px; height:1px; background:var(--gold); }
+.broll-feature-hl { font-family:var(--disp); font-size:clamp(2rem,4vw,3.4rem); line-height:.95; color:var(--fg); margin-bottom:1.5rem; }
+.broll-feature-hl em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; text-transform:none; font-size:.86em; display:block; }
+.broll-feature-sub { font-size:.88rem; color:var(--dim); line-height:1.85; font-weight:300; margin-bottom:2rem; max-width: 480px; }
+.broll-feature-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:2rem; }
+.broll-feature-tag { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,240,232,.6); padding:.45rem .8rem; border:1px solid var(--border); }
+.broll-feature-visual {
+  aspect-ratio: 4/3;
+  background: radial-gradient(ellipse at 50% 50%, #231A0A 0%, var(--bg) 80%);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.broll-feature-visual svg { width: 60%; opacity: .6; }
+
+/* ── PROCESS ── */
+.process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+.process-step { padding: 3rem 3rem 3rem 0; border-right: 1px solid var(--border); position: relative; }
+.process-step:last-child { border-right: none; padding-right: 0; }
+.process-step:nth-child(2), .process-step:nth-child(3) { padding-left: 3rem; }
+.process-step::before { content:''; position:absolute; top:0; left:0; width:28px; height:1px; background:var(--teal); }
+.process-step:nth-child(2)::before, .process-step:nth-child(3)::before { left:3rem; }
+.process-num { font-family: var(--disp); font-size: .7rem; letter-spacing: .22em; color: var(--teal); opacity: .5; margin-bottom: 1.25rem; display: block; }
+.process-name { font-family: var(--disp); font-size: 1.8rem; letter-spacing: .04em; line-height: 1; color: var(--fg); margin-bottom: .9rem; }
+.process-desc { font-size: .8rem; color: var(--dim); line-height: 1.9; }
+
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.pricing-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  padding: 2.25rem 1.75rem; position: relative; transition: border-color .4s;
+}
+.pricing-card.featured { border-color: var(--teal); }
+.pricing-card.featured::before { content:'Most Popular'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); font-size:.46rem; letter-spacing:.24em; text-transform:uppercase; padding:.28rem .8rem; background:var(--teal); color:#000; white-space:nowrap; }
+.pricing-tier { font-family: var(--disp); font-size: 1.35rem; letter-spacing: .04em; color: var(--fg); margin-bottom: .5rem; line-height: 1.1; }
+.pricing-range { font-size: .68rem; color: var(--teal); letter-spacing: .1em; margin-bottom: 1.25rem; font-weight: 500; }
+.pricing-desc { font-size: .76rem; color: var(--dim); line-height: 1.85; margin-bottom: 1.5rem; }
+.pricing-includes { list-style: none; }
+.pricing-includes li { font-size: .7rem; color: var(--muted); padding: .3rem 0; border-bottom: 1px solid var(--border2); display: flex; align-items: center; gap: .5rem; }
+.pricing-includes li:last-child { border-bottom: none; }
+.pricing-includes li::before { content:''; display:block; width:12px; height:1px; background:var(--teal); opacity:.5; flex-shrink:0; }
+
+@media(max-width:1000px){ .pricing-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:760px){
+  .path-grid { grid-template-columns: 1fr; }
+  .path-card { border-right: none; border-bottom: 1px solid var(--border); }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-step { border-right: none; border-top: 1px solid var(--border); padding: 2.5rem 0; }
+  .process-step:nth-child(2), .process-step:nth-child(3) { padding-left: 0; }
+  .process-step::before, .process-step:nth-child(2)::before, .process-step:nth-child(3)::before { left: 0; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .broll-feature { grid-template-columns: 1fr; padding: 4rem 6%; gap: 2.5rem; }
+}
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+  <meta name="msapplication-TileColor" content="#11140F">
+  <meta name="msapplication-TileImage" content="/app-tile-512.png">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/index.html" class="nav-logo"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html" class="active">Brand Studio</a></li>
+    <li><a href="/technical-studio.html">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero" style="min-height:54vh">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 75% 45%,rgba(45,212,191,.06) 0%,transparent 65%);pointer-events:none"></div>
+  <div class="page-hero-inner">
+    <div class="eyebrow reveal">What We Do</div>
+    <h1 class="hero-hl reveal">A full media stack<br><em>under one roof.</em></h1>
+    <p class="hero-sub reveal">Social content systems, production &amp; post, original B-roll, sound design, AI media workflows, and brand films &mdash; built for businesses ready to scale how they show up.</p>
+    <div style="margin-top:2.5rem" class="reveal"><a href="/contact.html" class="btn btn-orange">Start a Project &rarr;</a></div>
+  </div>
+</div>
+
+<!-- THREE PILLARS -->
+<section class="section border-b">
+  <div class="eyebrow reveal">Three Pillars</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.5rem,5.5vw,4.5rem);margin-bottom:3.5rem">Three ways<br>we work together</h2>
+  <div class="path-grid reveal">
+
+    <div class="path-card" style="--accent:var(--teal)">
+      <span class="path-num">01</span>
+      <div class="path-name">Social Content<br>Systems</div>
+      <div class="path-tagline">Always-on content.</div>
+      <p class="path-desc">For brands that need a steady, cinematic rhythm on social &mdash; without staffing an in-house team. One production day becomes a month of content.</p>
+      <ul class="path-list">
+        <li>Monthly content packages (4&ndash;12+ pieces)</li>
+        <li>Reels, Shorts, TikTok, LinkedIn video</li>
+        <li>AI-assisted editing &amp; auto-captioning</li>
+        <li>Multi-platform reformatting</li>
+        <li>Monthly strategy &amp; performance review</li>
+      </ul>
+    </div>
+
+    <div class="path-card" style="--accent:var(--gold)">
+      <span class="path-num">02</span>
+      <div class="path-name">Production<br>&amp; Post</div>
+      <div class="path-tagline">Hollywood-grade craft.</div>
+      <p class="path-desc">Full production stack &mdash; from concept to final master. Industry-standard cameras and lighting, plus the back-end most studios outsource.</p>
+      <ul class="path-list">
+        <li>Cinema-grade production days</li>
+        <li>Original B-roll &amp; stock cinematography</li>
+        <li>Editorial, color grade &amp; finishing</li>
+        <li>Sound design, mix, &amp; original score</li>
+        <li>VFX &amp; motion design</li>
+      </ul>
+    </div>
+
+    <div class="path-card" style="--accent:var(--orange)">
+      <span class="path-num">03</span>
+      <div class="path-name">Brand Films &amp;<br>Documentaries</div>
+      <div class="path-tagline">Theatrical-grade story.</div>
+      <p class="path-desc">When the story is worth the full weight of film. We make brand films, documentaries, and commercial spots with the discipline of theatrical work.</p>
+      <ul class="path-list">
+        <li>Brand films &amp; manifesto pieces</li>
+        <li>Documentaries (short &amp; feature)</li>
+        <li>Commercials &amp; campaign spots</li>
+        <li>Founder &amp; impact films</li>
+        <li>Festival &amp; theatrical strategy</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- B-ROLL FEATURE BAND -->
+<section class="broll-feature">
+  <div class="reveal">
+    <div class="broll-feature-eye">Featured Service</div>
+    <h2 class="broll-feature-hl">Cinema-grade B-roll.<em>Without the shoot day.</em></h2>
+    <p class="broll-feature-sub">Original, cinematic B-roll captured on Hollywood-grade gear &mdash; licensed for your brand. Shoot to brief, or pull from our growing curated library. Drop it into your timeline and look like the brand you've been pretending to be.</p>
+    <div class="broll-feature-tags">
+      <span class="broll-feature-tag">Lifestyle</span>
+      <span class="broll-feature-tag">Urban</span>
+      <span class="broll-feature-tag">Nature</span>
+      <span class="broll-feature-tag">Product</span>
+      <span class="broll-feature-tag">Faith &amp; Community</span>
+      <span class="broll-feature-tag">Documentary</span>
+      <span class="broll-feature-tag">Aerial</span>
+      <span class="broll-feature-tag">Macro</span>
+    </div>
+    <a href="/contact.html" class="btn btn-gold">Request B-Roll Access &rarr;</a>
+  </div>
+  <div class="broll-feature-visual reveal rd1">
+    <svg viewBox="0 0 400 300" fill="none">
+      <rect x="40" y="60" width="120" height="180" stroke="#C9973A" stroke-width=".8" opacity=".7"/>
+      <rect x="170" y="40" width="120" height="200" stroke="#C9973A" stroke-width="1"/>
+      <rect x="300" y="80" width="80" height="160" stroke="#C9973A" stroke-width=".8" opacity=".5"/>
+      <circle cx="230" cy="140" r="34" stroke="#2DD4BF" stroke-width=".7"/>
+      <line x1="40" y1="265" x2="380" y2="265" stroke="#C2612F" stroke-width=".5" opacity=".5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section border-b">
+  <div class="eyebrow reveal">Process</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.5rem,5.5vw,4.5rem);margin-bottom:4rem">How we work</h2>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <span class="process-num">01</span>
+      <div class="process-name">Strategy</div>
+      <p class="process-desc">We start with a conversation, not a quote. We learn what you're trying to accomplish, who you're trying to reach, and what success looks like &mdash; then we build a plan around it.</p>
+    </div>
+    <div class="process-step reveal rd1">
+      <span class="process-num">02</span>
+      <div class="process-name">Production</div>
+      <p class="process-desc">Pre-production, shoot, edit &mdash; done with intention. Single-day shoots to multi-day documentaries, on industry-standard cameras and lighting. The craft shows up on screen.</p>
+    </div>
+    <div class="process-step reveal rd2">
+      <span class="process-num">03</span>
+      <div class="process-name">Distribution</div>
+      <p class="process-desc">A great film no one sees is just a hard drive. We format, size, and deliver content built for every platform &mdash; and build the system that keeps it going long after wrap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING GUIDANCE -->
+<section class="section border-b" style="background:var(--bg2)">
+  <div class="eyebrow reveal">Investment</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:.75rem">Investment ranges</h2>
+  <p class="reveal" style="color:var(--dim);font-size:.9rem;line-height:1.85;max-width:580px;margin-bottom:3.5rem">Every project is different. These ranges give you a starting point &mdash; we'll get specific once we understand your goals on a strategy call.</p>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card featured reveal">
+      <div class="pricing-tier">Social Content</div>
+      <div class="pricing-range">$2,500 &ndash; $6,000 / month</div>
+      <p class="pricing-desc">Ongoing monthly content. Built for businesses that need consistent video &mdash; without staffing a creative team.</p>
+      <ul class="pricing-includes">
+        <li>8&ndash;16 short-form videos / month</li>
+        <li>Multi-platform reformatting</li>
+        <li>AI-assisted editing</li>
+        <li>Monthly performance review</li>
+        <li>Quarterly shoot day included</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card reveal rd1">
+      <div class="pricing-tier">B-Roll &amp; Stock</div>
+      <div class="pricing-range">$1,500 &ndash; $8,000</div>
+      <p class="pricing-desc">Bespoke B-roll shoots or licensed access to our curated cinematic library. Drop-in cinema for your existing content.</p>
+      <ul class="pricing-includes">
+        <li>Single-day bespoke shoots</li>
+        <li>Library licensing (annual)</li>
+        <li>Cinema-grade footage</li>
+        <li>Color-graded, ready to cut</li>
+        <li>Brand-exclusive options</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card reveal rd1">
+      <div class="pricing-tier">Brand Film<br>or Documentary</div>
+      <div class="pricing-range">$10,000 &ndash; $75,000+</div>
+      <p class="pricing-desc">Cinematic brand films, documentaries, and commercial spots. Priced by scope, scale, and complexity.</p>
+      <ul class="pricing-includes">
+        <li>Full pre-production</li>
+        <li>1&ndash;5 day production shoot</li>
+        <li>Sound design &amp; original score</li>
+        <li>Professional color grade</li>
+        <li>Distribution-ready deliverables</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card reveal rd2">
+      <div class="pricing-tier">AI Media<br>Workflow</div>
+      <div class="pricing-range">$3,500 &ndash; $12,000 setup</div>
+      <p class="pricing-desc">One-time workflow build plus optional ongoing retainer. We set up your AI content system &mdash; or run it for you.</p>
+      <ul class="pricing-includes">
+        <li>Workflow audit &amp; design</li>
+        <li>AI tool setup &amp; integration</li>
+        <li>Repurposing pipelines</li>
+        <li>Team training &amp; handoff</li>
+        <li>Optional ongoing operation</li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="reveal" style="font-size:.7rem;color:var(--muted);margin-top:2rem;letter-spacing:.08em">All pricing is project-specific. Reach out for a free 30-minute strategy call.</p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-sm" style="text-align:center;background:var(--green)">
+  <div class="eyebrow reveal" style="justify-content:center;color:rgba(245,240,232,.5)">Get Started</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin:.75rem 0 1.75rem">Ready when you are.</h2>
+  <p class="reveal" style="color:rgba(245,240,232,.55);font-size:.9rem;line-height:1.8;max-width:460px;margin:0 auto 2.5rem">Tell us what you're building. We'll tell you honestly if we're the right fit &mdash; and if we are, we'll move fast.</p>
+  <a href="/contact.html" class="btn btn-solid reveal" style="margin:0 auto">Start a Project &rarr;</a>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

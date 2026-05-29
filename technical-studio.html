@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Technical Studio — McCallum Media Group</title>
+<meta name="description" content="Websites, UX/UI, AI workflows, and technical implementation by seasoned software engineers."/>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+.coming { padding:9rem 6% 6rem; min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(160deg, #11140F 0%, #161A14 100%); }
+.coming-inner { max-width:760px; }
+.coming-eye { font-size:.55rem; letter-spacing:.42em; text-transform:uppercase; color:#C9973A; margin-bottom:2rem; display:inline-flex; align-items:center; gap:.7rem; }
+.coming-eye::before, .coming-eye::after { content:''; display:block; width:24px; height:1px; background:#C9973A; opacity:.55; }
+.coming-h1 { font-family:var(--disp); font-size:clamp(2.6rem,6vw,5rem); line-height:.92; letter-spacing:.02em; color:var(--fg); margin-bottom:1.5rem; }
+.coming-h1 em { display:block; font-family:var(--serif); font-style:italic; color:#C9973A; font-size:.82em; font-weight:300; text-transform:none; }
+.coming-tag { font-family:var(--serif); font-style:italic; color:#C9973A; font-size:1.15rem; font-weight:300; margin-bottom:1.75rem; }
+.coming-p { font-size:.95rem; color:var(--dim); line-height:1.9; max-width:560px; margin:0 auto 2.5rem; font-weight:300; }
+.coming-caps { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; max-width:580px; margin:0 auto 3rem; text-align:left; }
+.coming-cap { padding:1.1rem 1.25rem; background:var(--bg2); border:1px solid var(--border); }
+.coming-cap-t { font-family:var(--disp); font-size:.7rem; letter-spacing:.22em; color:#C9973A; margin-bottom:.35rem; }
+.coming-cap-d { font-size:.75rem; color:var(--muted); line-height:1.65; }
+.coming-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+@media(max-width:640px){ .coming-caps { grid-template-columns:1fr; } }
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/index.html" class="nav-logo"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html">Brand Studio</a></li>
+    <li><a href="/technical-studio.html" class="active">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<section class="coming">
+  <div class="coming-inner">
+    <div class="coming-eye">Lane 02 — Technical Studio</div>
+    <h1 class="coming-h1">Websites, UX/UI,<em>AI workflows.</em></h1>
+    <p class="coming-tag">The digital backbone, done right.</p>
+    <p class="coming-p">Seasoned software engineers building the websites, UX/UI, and AI workflows that turn your vision into systems that actually run. Full page in development. Reach out below to discuss your project.</p>
+
+    <div class="coming-caps">
+      
+      <div class="coming-cap"><div class="coming-cap-t">Web Design</div><div class="coming-cap-d">UX/UI led, by seasoned engineers</div></div>
+      <div class="coming-cap"><div class="coming-cap-t">AI Workflows</div><div class="coming-cap-d">Content + lead engines that run</div></div>
+      <div class="coming-cap"><div class="coming-cap-t">Internal Tools</div><div class="coming-cap-d">Custom dashboards &amp; automations</div></div>
+      <div class="coming-cap"><div class="coming-cap-t">Tech Strategy</div><div class="coming-cap-d">Integration &amp; system consulting</div></div>
+
+    </div>
+
+    <div class="coming-actions">
+      <a href="/contact.html" class="btn btn-gold">Start an Inquiry &rarr;</a>
+      <a href="/index.html" class="btn btn-teal">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+</script>
+</body>
+</html>

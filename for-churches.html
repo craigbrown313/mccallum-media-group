@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>For Churches — McCallum Media Group</title>
+<meta name="description" content="Sermon repurposing, ministry films, and weekly content systems for churches. Show up online the way you show up in the room."/>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+.aud-hero {
+  position:relative; padding:8rem 6% 6rem; overflow:hidden;
+  background:linear-gradient(160deg, #181E18 0%, #11140F 55%, #1A1610 100%);
+  border-bottom:1px solid var(--border);
+}
+.aud-hero::before {
+  content:''; position:absolute; inset:0; opacity:.7;
+  background:radial-gradient(ellipse 60% 70% at 78% 35%, rgba(42,106,79,.18) 0%, transparent 65%);
+  pointer-events:none;
+}
+.aud-hero-inner { position:relative; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:center; }
+.aud-eye { font-size:.55rem; letter-spacing:.42em; text-transform:uppercase; color:var(--orange); margin-bottom:1.5rem; display:flex; align-items:center; gap:.7rem; }
+.aud-eye::before { content:''; display:block; width:32px; height:1px; background:var(--orange); }
+.aud-h1 { font-family:var(--disp); font-size:clamp(3rem,7vw,5.6rem); line-height:.9; letter-spacing:.015em; text-transform:uppercase; color:var(--fg); margin-bottom:1.5rem; }
+.aud-h1 em { display:block; font-family:var(--serif); font-style:italic; color:var(--gold); font-size:.78em; font-weight:300; line-height:1.12; letter-spacing:.01em; text-transform:none; }
+.aud-rule { width:48px; height:1px; background:var(--orange); margin:2rem 0; }
+.aud-sub { font-size:1rem; color:rgba(245,240,232,.62); line-height:1.85; max-width:520px; font-weight:300; margin-bottom:2.25rem; }
+.aud-actions { display:flex; gap:1.25rem; align-items:center; flex-wrap:wrap; }
+.aud-hero-visual {
+  position:relative; aspect-ratio:4/5; border:1px solid var(--border);
+  background:radial-gradient(ellipse at 50% 30%, #1C2A1F 0%, #11140F 75%);
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.aud-hero-visual svg { width:75%; opacity:.78; }
+@media(max-width:900px){ .aud-hero-inner { grid-template-columns:1fr; gap:3rem; } .aud-hero-visual { aspect-ratio:16/10; max-width:480px; margin:0 auto; } }
+
+.pains { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.pains-head { max-width:760px; margin:0 auto 3.5rem; text-align:center; }
+.pains-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--teal); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.pains-eye::before,.pains-eye::after { content:''; display:block; width:24px; height:1px; background:var(--teal); opacity:.55; }
+.pains-hl { font-family:var(--disp); font-size:clamp(2.2rem,4.5vw,3.8rem); line-height:.95; color:var(--fg); margin-bottom:1.25rem; }
+.pains-hl em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; text-transform:none; font-size:.86em; }
+.pains-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:1100px; margin:0 auto; }
+.pain-card { padding:2rem 1.75rem; background:var(--bg3); border:1px solid var(--border); position:relative; }
+.pain-card::before { content:''; position:absolute; top:0; left:0; width:32px; height:2px; background:var(--orange); }
+.pain-q { font-family:var(--disp); font-size:.62rem; letter-spacing:.28em; color:var(--orange); margin-bottom:1rem; display:block; }
+.pain-t { font-family:var(--disp); font-size:1.3rem; letter-spacing:.04em; color:var(--fg); margin-bottom:.75rem; line-height:1.15; }
+.pain-d { font-size:.78rem; color:var(--dim); line-height:1.85; }
+@media(max-width:760px){ .pains-grid { grid-template-columns:1fr; } }
+
+.offer { padding:7rem 6%; border-bottom:1px solid var(--border); }
+.offer-head { max-width:760px; margin:0 auto 4rem; text-align:center; }
+.offer-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--orange); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.offer-eye::before,.offer-eye::after { content:''; display:block; width:24px; height:1px; background:var(--orange); opacity:.55; }
+.offer-hl { font-family:var(--disp); font-size:clamp(2.2rem,4.5vw,3.8rem); line-height:.95; color:var(--fg); margin-bottom:1.25rem; }
+.offer-hl em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; text-transform:none; font-size:.86em; }
+.offer-sub { font-size:.92rem; color:var(--dim); line-height:1.85; }
+.offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1240px; margin:0 auto; }
+.offer-card { padding:2.5rem 2rem; background:var(--bg2); border:1px solid var(--border); position:relative; }
+.offer-card-n { font-family:var(--disp); font-size:.58rem; letter-spacing:.26em; color:var(--orange); opacity:.78; margin-bottom:1rem; display:block; }
+.offer-card-t { font-family:var(--disp); font-size:1.45rem; letter-spacing:.04em; color:var(--fg); line-height:1.1; margin-bottom:.85rem; }
+.offer-card-tag { font-family:var(--serif); font-style:italic; color:var(--teal); font-size:.95rem; font-weight:300; margin-bottom:1.25rem; }
+.offer-card-d { font-size:.78rem; color:var(--dim); line-height:1.85; margin-bottom:1.5rem; }
+.offer-list { list-style:none; padding:0; margin:0; border-top:1px solid var(--border2); }
+.offer-list li { font-size:.7rem; color:var(--muted); padding:.55rem 0; border-bottom:1px solid var(--border2); display:flex; align-items:center; gap:.5rem; }
+.offer-list li::before { content:''; display:block; width:12px; height:1px; background:var(--orange); opacity:.55; flex-shrink:0; }
+@media(max-width:900px){ .offer-grid { grid-template-columns:1fr; } }
+
+.process { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; max-width:1240px; margin:3rem auto 0; background:var(--border); }
+.process-step { padding:2.25rem 1.5rem; background:var(--bg); position:relative; }
+.process-step::before { content:''; position:absolute; top:0; left:0; width:24px; height:2px; background:var(--teal); }
+.process-n { font-family:var(--disp); font-size:.6rem; letter-spacing:.26em; color:var(--teal); opacity:.7; margin-bottom:.85rem; display:block; }
+.process-t { font-family:var(--disp); font-size:1.25rem; letter-spacing:.04em; color:var(--fg); line-height:1.1; margin-bottom:.6rem; }
+.process-d { font-size:.72rem; color:var(--muted); line-height:1.7; }
+@media(max-width:760px){ .process-grid { grid-template-columns:1fr; } }
+
+.proof { padding:7rem 6%; border-bottom:1px solid var(--border); text-align:center; }
+.proof-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.proof-eye::before,.proof-eye::after { content:''; display:block; width:24px; height:1px; background:var(--gold); opacity:.55; }
+.proof-q { font-family:var(--serif); font-style:italic; font-size:clamp(1.6rem,3.5vw,2.6rem); font-weight:300; line-height:1.4; color:var(--fg); max-width:880px; margin:1rem auto 1.5rem; }
+.proof-q em { font-style:normal; color:var(--gold); }
+.proof-c { font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+
+.faq { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.faq-inner { max-width:880px; margin:0 auto; }
+.faq-head { text-align:center; margin-bottom:3rem; }
+.faq-q { padding:1.4rem 0; cursor:pointer; font-size:.95rem; color:var(--fg); font-weight:300; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-top:1px solid var(--border2); transition:color .3s; }
+.faq-q:hover { color:var(--orange); }
+.faq-q-icon { font-size:1.2rem; color:var(--orange); transition:transform .3s; }
+.faq-item.open .faq-q-icon { transform:rotate(45deg); }
+.faq-a { font-size:.85rem; color:var(--dim); line-height:1.85; padding:0 0 1.4rem; display:none; }
+.faq-item.open .faq-a { display:block; }
+
+.cta-band { padding:5rem 6%; text-align:center; background:var(--green); }
+.cta-band h2 { font-family:var(--disp); font-size:clamp(2rem,5vw,3.6rem); line-height:1; margin-bottom:1rem; }
+.cta-band h2 em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; }
+.cta-band p { font-size:.92rem; color:rgba(245,240,232,.65); max-width:480px; margin:0 auto 2rem; line-height:1.8; }
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+  <meta name="msapplication-TileColor" content="#11140F">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/index.html" class="nav-logo"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html" class="active">Brand Studio</a></li>
+    <li><a href="/technical-studio.html">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<section class="aud-hero">
+  <div class="aud-hero-inner">
+    <div class="reveal">
+      <div class="aud-eye">For Churches &amp; Ministries</div>
+      <h1 class="aud-h1">Show up online<em>like Sunday morning.</em></h1>
+      <div class="aud-rule"></div>
+      <p class="aud-sub">Sermon repurposing, series films, and weekly content systems for churches and ministries that want their digital presence to match the weight of what happens in the room.</p>
+      <div class="aud-actions">
+        <a href="/contact.html" class="btn btn-gold">Start a Conversation &rarr;</a>
+        <a href="#offers" class="btn btn-teal">See What We Do</a>
+      </div>
+    </div>
+    <div class="aud-hero-visual reveal rd1">
+      <svg viewBox="0 0 300 380" fill="none">
+        <path d="M150 60 L150 320" stroke="#C2612F" stroke-width="1.2"/>
+        <path d="M115 110 L185 110" stroke="#C2612F" stroke-width="1.2"/>
+        <circle cx="150" cy="80" r="6" fill="#C9973A" opacity=".7"/>
+        <path d="M40 300 Q150 220 260 300" stroke="#2DD4BF" stroke-width=".7" opacity=".7"/>
+        <path d="M55 320 Q150 250 245 320" stroke="#2DD4BF" stroke-width=".5" opacity=".4"/>
+        <line x1="40" y1="340" x2="260" y2="340" stroke="#C9973A" stroke-width=".3" opacity=".35"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="pains">
+  <div class="pains-head reveal">
+    <div class="pains-eye">The Real Challenge</div>
+    <h2 class="pains-hl">Does this<br><em>sound familiar?</em></h2>
+  </div>
+  <div class="pains-grid">
+    <div class="pain-card reveal">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"Our Sunday looks better than our YouTube."</div>
+      <p class="pain-d">In the room, the lighting is dialed and the message lands. Online, the auto-uploaded sermon sits next to a thumbnail nobody clicks. The gap between Sunday and the scroll is real.</p>
+    </div>
+    <div class="pain-card reveal rd1">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"Our comms director is overwhelmed."</div>
+      <p class="pain-d">One person doing graphics, video, social, web, and helping with worship planning. They're burning out. The content suffers. The reach plateaus. Nobody&rsquo;s the villain here &mdash; the system is the problem.</p>
+    </div>
+    <div class="pain-card reveal">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"We have great content, no distribution."</div>
+      <p class="pain-d">The sermon was incredible. The conference message was a moment. But it sits as a 47-minute YouTube upload nobody watches. The pieces that would actually travel never get cut.</p>
+    </div>
+    <div class="pain-card reveal rd1">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"The series launch always feels rushed."</div>
+      <p class="pain-d">You want a series teaser, a graphics package, a launch video, social cuts. Three weeks out, you have a logo and prayer. We've been there. There's a better cadence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="offers">
+  <div class="offer-head reveal">
+    <div class="offer-eye">What We Build</div>
+    <h2 class="offer-hl">Three engines<br><em>for the week.</em></h2>
+    <p class="offer-sub">Packages built for the actual rhythm of church communications &mdash; the Sunday cycle, the series launch, the conference, the testimony, the moment.</p>
+  </div>
+  <div class="offer-grid">
+
+    <div class="offer-card reveal">
+      <span class="offer-card-n">01 &middot; Weekly</span>
+      <div class="offer-card-t">Sermon-to-Social Engine</div>
+      <div class="offer-card-tag">Sunday becomes content.</div>
+      <p class="offer-card-d">Your sermon goes in. Cinematic short-form comes out. AI-assisted, human-directed clips formatted for Reels, Shorts, TikTok, and YouTube &mdash; weekly, reliably, in your voice.</p>
+      <ul class="offer-list">
+        <li>4&ndash;8 clips per sermon</li>
+        <li>Vertical &amp; horizontal cuts</li>
+        <li>Branded captions &amp; lower-thirds</li>
+        <li>Multi-platform delivery</li>
+        <li>Weekly delivery cycle</li>
+      </ul>
+    </div>
+
+    <div class="offer-card reveal rd1">
+      <span class="offer-card-n">02 &middot; Series</span>
+      <div class="offer-card-t">Series &amp; Event Films</div>
+      <div class="offer-card-tag">Make the launch land.</div>
+      <p class="offer-card-d">Cinematic teasers, launch films, and graphics packages for sermon series, conferences, and major ministry moments. Built to move people &mdash; not just announce something.</p>
+      <ul class="offer-list">
+        <li>Series teaser films (30&ndash;90s)</li>
+        <li>Launch trailers &amp; bumpers</li>
+        <li>Conference brand films</li>
+        <li>Recap films post-event</li>
+        <li>Social rollout strategy</li>
+      </ul>
+    </div>
+
+    <div class="offer-card reveal rd2">
+      <span class="offer-card-n">03 &middot; Ministry</span>
+      <div class="offer-card-t">Testimony &amp; Vision Films</div>
+      <div class="offer-card-tag">When a story has to land.</div>
+      <p class="offer-card-d">Long-form documentary-style films for testimonies, vision-cast moments, capital campaigns, and missions storytelling. The kind of film that gets used for years.</p>
+      <ul class="offer-list">
+        <li>Member testimony films</li>
+        <li>Vision-cast / state of the church</li>
+        <li>Capital campaign films</li>
+        <li>Missions / outreach documentary</li>
+        <li>Anniversary &amp; legacy films</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="process">
+  <div style="text-align:center;max-width:760px;margin:0 auto">
+    <div class="pains-eye reveal">Process</div>
+    <h2 class="pains-hl reveal">How we<br><em>partner with you.</em></h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <span class="process-n">01</span>
+      <div class="process-t">Understand</div>
+      <p class="process-d">We get to know your church &mdash; the voice, the values, the comms team you already have, what's working, what isn't.</p>
+    </div>
+    <div class="process-step reveal rd1">
+      <span class="process-n">02</span>
+      <div class="process-t">Design the Rhythm</div>
+      <p class="process-d">We build the delivery cadence around your Sunday cycle, your series calendar, your team's actual capacity.</p>
+    </div>
+    <div class="process-step reveal rd2">
+      <span class="process-n">03</span>
+      <div class="process-t">Produce</div>
+      <p class="process-d">Cinematic craft, theological literacy, and the discretion that ministry work requires. We get the room and we get the work.</p>
+    </div>
+    <div class="process-step reveal rd3">
+      <span class="process-n">04</span>
+      <div class="process-t">Equip</div>
+      <p class="process-d">Hand-off to your team where it makes sense. Templates, training, and the systems that make next Sunday easier than this one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="proof-eye reveal">From the Studio</div>
+  <div class="proof-q reveal">"Founded by the team behind <em>Between Mercy and Me</em> &mdash; 700+ theaters, an original soundtrack &mdash; with production credits on Angel Studios&rsquo; <em>He Calls Me Daughter</em>."</div>
+  <div class="proof-c reveal">Theatrical craft &middot; Ministry sensibility &middot; Built for the long haul</div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <div class="pains-eye" style="justify-content:center">Common Questions</div>
+      <h2 class="pains-hl">What pastors<br><em>usually ask.</em></h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">We're a smaller church. Is this for us?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes. We've designed packages that scale &mdash; the sermon-to-social engine works the same for a 300-attendance church as a 3,000-attendance one. The pricing scales with the volume of content you need, not the size of your campus.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do we need to send you our raw sermon files?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Just the master upload (the same file you'd put on YouTube). We work from there. Most churches send a shared drive link or upload weekly to a folder we set up. The whole intake is built to be three minutes of effort on your end.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Will the content reflect our theology?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes &mdash; and this matters to us. We pull pull-quotes and clips that match your tradition's tone and theological emphasis. We won't pick the &ldquo;most clickable&rdquo; clip if it misrepresents what was actually said. We err toward what's true to the message every time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can we get cuts ready by Monday morning?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes &mdash; that's the typical delivery window. Sunday sermon in by Sunday night, finished cuts in your hands by Monday end-of-day. Some packages include same-day rush for Sunday-afternoon delivery on key moments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Will this replace our comms team?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">No &mdash; it equips them. Most of our church clients have a 1&ndash;3 person comms team. We become the engine for the video work specifically, which gives them back the hours they need to focus on the strategy, the bulletin, the events, the discipleship content. The team gets stronger, not replaced.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you handle livestream production?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Not directly &mdash; that's its own discipline best handled in-house or by a livestream specialist. But we can advise on workflows that get your livestream master into a post-production pipeline cleanly, and we have partners we trust if you need a referral.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2 class="reveal">Your message deserves<br><em>better distribution.</em></h2>
+  <p class="reveal">Tell us about your church and what you're trying to build. First call is free, no pitch &mdash; just conversation.</p>
+  <a href="/contact.html" class="btn btn-gold reveal" style="margin:0 auto">Start a Conversation &rarr;</a>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function toggleFaq(el){const item=el.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');}
+</script>
+</body>
+</html>

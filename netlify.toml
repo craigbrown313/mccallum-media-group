@@ -1,0 +1,65 @@
+# netlify.toml — McCallum Creative Co.
+
+[build]
+  publish = "."
+
+# Clean URLs
+[[redirects]]
+  from = "/work"
+  to   = "/work.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to   = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to   = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to   = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/productions"
+  to   = "/productions.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai-consulting"
+  to   = "/ai-consulting.html"
+  status = 200
+
+[[redirects]]
+  from = "/social-automation"
+  to   = "/social-automation.html"
+  status = 200
+
+[[redirects]]
+  from = "/systems"
+  to   = "/systems-automation.html"
+  status = 200
+
+[[redirects]]
+  from = "/systems-automation"
+  to   = "/systems-automation.html"
+  status = 200
+
+# 404
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 404
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"

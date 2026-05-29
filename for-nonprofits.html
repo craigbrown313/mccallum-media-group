@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>For Nonprofits — McCallum Media Group</title>
+<meta name="description" content="Impact films, donor campaigns, and storytelling systems for nonprofits and social-impact organizations. Cinematic craft meets operational consistency."/>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+.aud-hero {
+  position:relative; padding:8rem 6% 6rem; overflow:hidden;
+  background:linear-gradient(160deg, #1B1810 0%, #11140F 55%, #161A14 100%);
+  border-bottom:1px solid var(--border);
+}
+.aud-hero::before {
+  content:''; position:absolute; inset:0; opacity:.65;
+  background:radial-gradient(ellipse 60% 70% at 78% 35%, rgba(201,151,58,.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+.aud-hero-inner { position:relative; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:center; }
+.aud-eye { font-size:.55rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:flex; align-items:center; gap:.7rem; }
+.aud-eye::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
+.aud-h1 { font-family:var(--disp); font-size:clamp(3rem,7vw,5.6rem); line-height:.9; letter-spacing:.015em; text-transform:uppercase; color:var(--fg); margin-bottom:1.5rem; }
+.aud-h1 em { display:block; font-family:var(--serif); font-style:italic; color:var(--gold); font-size:.78em; font-weight:300; line-height:1.12; letter-spacing:.01em; text-transform:none; }
+.aud-rule { width:48px; height:1px; background:var(--orange); margin:2rem 0; }
+.aud-sub { font-size:1rem; color:rgba(245,240,232,.62); line-height:1.85; max-width:520px; font-weight:300; margin-bottom:2.25rem; }
+.aud-actions { display:flex; gap:1.25rem; align-items:center; flex-wrap:wrap; }
+.aud-hero-visual {
+  position:relative; aspect-ratio:4/5; border:1px solid var(--border);
+  background:radial-gradient(ellipse at 50% 30%, #2A2418 0%, #11140F 75%);
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.aud-hero-visual svg { width:75%; opacity:.75; }
+@media(max-width:900px){ .aud-hero-inner { grid-template-columns:1fr; gap:3rem; } .aud-hero-visual { aspect-ratio:16/10; max-width:480px; margin:0 auto; } }
+
+.pains { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.pains-head { max-width:760px; margin:0 auto 3.5rem; text-align:center; }
+.pains-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--teal); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.pains-eye::before,.pains-eye::after { content:''; display:block; width:24px; height:1px; background:var(--teal); opacity:.55; }
+.pains-hl { font-family:var(--disp); font-size:clamp(2.2rem,4.5vw,3.8rem); line-height:.95; color:var(--fg); margin-bottom:1.25rem; }
+.pains-hl em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; text-transform:none; font-size:.86em; }
+.pains-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:1100px; margin:0 auto; }
+.pain-card { padding:2rem 1.75rem; background:var(--bg3); border:1px solid var(--border); position:relative; }
+.pain-card::before { content:''; position:absolute; top:0; left:0; width:32px; height:2px; background:var(--gold); }
+.pain-q { font-family:var(--disp); font-size:.62rem; letter-spacing:.28em; color:var(--gold); margin-bottom:1rem; display:block; }
+.pain-t { font-family:var(--disp); font-size:1.3rem; letter-spacing:.04em; color:var(--fg); margin-bottom:.75rem; line-height:1.15; }
+.pain-d { font-size:.78rem; color:var(--dim); line-height:1.85; }
+@media(max-width:760px){ .pains-grid { grid-template-columns:1fr; } }
+
+.offer { padding:7rem 6%; border-bottom:1px solid var(--border); }
+.offer-head { max-width:760px; margin:0 auto 4rem; text-align:center; }
+.offer-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.offer-eye::before,.offer-eye::after { content:''; display:block; width:24px; height:1px; background:var(--gold); opacity:.55; }
+.offer-hl { font-family:var(--disp); font-size:clamp(2.2rem,4.5vw,3.8rem); line-height:.95; color:var(--fg); margin-bottom:1.25rem; }
+.offer-hl em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; text-transform:none; font-size:.86em; }
+.offer-sub { font-size:.92rem; color:var(--dim); line-height:1.85; }
+.offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1240px; margin:0 auto; }
+.offer-card { padding:2.5rem 2rem; background:var(--bg2); border:1px solid var(--border); position:relative; }
+.offer-card-n { font-family:var(--disp); font-size:.58rem; letter-spacing:.26em; color:var(--gold); opacity:.75; margin-bottom:1rem; display:block; }
+.offer-card-t { font-family:var(--disp); font-size:1.45rem; letter-spacing:.04em; color:var(--fg); line-height:1.1; margin-bottom:.85rem; }
+.offer-card-tag { font-family:var(--serif); font-style:italic; color:var(--teal); font-size:.95rem; font-weight:300; margin-bottom:1.25rem; }
+.offer-card-d { font-size:.78rem; color:var(--dim); line-height:1.85; margin-bottom:1.5rem; }
+.offer-list { list-style:none; padding:0; margin:0; border-top:1px solid var(--border2); }
+.offer-list li { font-size:.7rem; color:var(--muted); padding:.55rem 0; border-bottom:1px solid var(--border2); display:flex; align-items:center; gap:.5rem; }
+.offer-list li::before { content:''; display:block; width:12px; height:1px; background:var(--gold); opacity:.55; flex-shrink:0; }
+@media(max-width:900px){ .offer-grid { grid-template-columns:1fr; } }
+
+.process { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; max-width:1240px; margin:3rem auto 0; background:var(--border); }
+.process-step { padding:2.25rem 1.5rem; background:var(--bg); position:relative; }
+.process-step::before { content:''; position:absolute; top:0; left:0; width:24px; height:2px; background:var(--teal); }
+.process-n { font-family:var(--disp); font-size:.6rem; letter-spacing:.26em; color:var(--teal); opacity:.7; margin-bottom:.85rem; display:block; }
+.process-t { font-family:var(--disp); font-size:1.25rem; letter-spacing:.04em; color:var(--fg); line-height:1.1; margin-bottom:.6rem; }
+.process-d { font-size:.72rem; color:var(--muted); line-height:1.7; }
+@media(max-width:760px){ .process-grid { grid-template-columns:1fr; } }
+
+.proof { padding:7rem 6%; border-bottom:1px solid var(--border); text-align:center; }
+.proof-eye { font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--teal); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:.65rem; }
+.proof-eye::before,.proof-eye::after { content:''; display:block; width:24px; height:1px; background:var(--teal); opacity:.55; }
+.proof-q { font-family:var(--serif); font-style:italic; font-size:clamp(1.6rem,3.5vw,2.6rem); font-weight:300; line-height:1.4; color:var(--fg); max-width:880px; margin:1rem auto 1.5rem; }
+.proof-q em { font-style:normal; color:var(--gold); }
+.proof-c { font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+
+.faq { padding:6rem 6%; border-bottom:1px solid var(--border); background:var(--bg2); }
+.faq-inner { max-width:880px; margin:0 auto; }
+.faq-head { text-align:center; margin-bottom:3rem; }
+.faq-q { padding:1.4rem 0; cursor:pointer; font-size:.95rem; color:var(--fg); font-weight:300; display:flex; align-items:center; justify-content:space-between; gap:1rem; border-top:1px solid var(--border2); transition:color .3s; }
+.faq-q:hover { color:var(--gold); }
+.faq-q-icon { font-size:1.2rem; color:var(--gold); transition:transform .3s; }
+.faq-item.open .faq-q-icon { transform:rotate(45deg); }
+.faq-a { font-size:.85rem; color:var(--dim); line-height:1.85; padding:0 0 1.4rem; display:none; }
+.faq-item.open .faq-a { display:block; }
+
+.cta-band { padding:5rem 6%; text-align:center; background:var(--green); }
+.cta-band h2 { font-family:var(--disp); font-size:clamp(2rem,5vw,3.6rem); line-height:1; margin-bottom:1rem; }
+.cta-band h2 em { font-family:var(--serif); font-style:italic; color:var(--gold); font-weight:300; }
+.cta-band p { font-size:.92rem; color:rgba(245,240,232,.65); max-width:480px; margin:0 auto 2rem; line-height:1.8; }
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+  <meta name="msapplication-TileColor" content="#11140F">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/index.html" class="nav-logo"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html" class="active">Brand Studio</a></li>
+    <li><a href="/technical-studio.html">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<section class="aud-hero">
+  <div class="aud-hero-inner">
+    <div class="reveal">
+      <div class="aud-eye">For Nonprofits &amp; Social Impact</div>
+      <h1 class="aud-h1">Films that move<em>donors to give.</em></h1>
+      <div class="aud-rule"></div>
+      <p class="aud-sub">Impact films, fundraising campaigns, and donor-engagement content for nonprofits that have something worth saying &mdash; and need a creative partner that takes the mission as seriously as you do.</p>
+      <div class="aud-actions">
+        <a href="/contact.html" class="btn btn-gold">Start a Conversation &rarr;</a>
+        <a href="#offers" class="btn btn-teal">See What We Do</a>
+      </div>
+    </div>
+    <div class="aud-hero-visual reveal rd1">
+      <svg viewBox="0 0 300 380" fill="none">
+        <circle cx="150" cy="180" r="110" stroke="#C9973A" stroke-width="1" opacity=".85"/>
+        <circle cx="150" cy="180" r="68" stroke="#C9973A" stroke-width=".6" opacity=".55"/>
+        <path d="M70 180 Q150 90 230 180 Q150 270 70 180Z" stroke="#2DD4BF" stroke-width=".7" opacity=".7"/>
+        <circle cx="150" cy="180" r="12" fill="#C9973A" opacity=".4"/>
+        <line x1="40" y1="180" x2="260" y2="180" stroke="#C9973A" stroke-width=".3" opacity=".35"/>
+        <line x1="150" y1="60" x2="150" y2="300" stroke="#C9973A" stroke-width=".3" opacity=".35"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="pains">
+  <div class="pains-head reveal">
+    <div class="pains-eye">The Real Challenge</div>
+    <h2 class="pains-hl">Does this<br><em>sound familiar?</em></h2>
+  </div>
+  <div class="pains-grid">
+    <div class="pain-card reveal">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"Our story is bigger than our budget."</div>
+      <p class="pain-d">You have a mission that matters. You don't have the budget for a full-time creative team &mdash; or the cycles to manage one. Most agencies treat nonprofits like an afterthought.</p>
+    </div>
+    <div class="pain-card reveal rd1">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"Our donor video looked like a webinar."</div>
+      <p class="pain-d">You needed a film that moved people. You got something that felt like corporate training. Donor fatigue is real &mdash; and lifeless content makes it worse.</p>
+    </div>
+    <div class="pain-card reveal">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"We get one shoot a year and then we're stuck."</div>
+      <p class="pain-d">The annual fundraiser film is the only video you produce. Then nothing for 11 months. Your social channels go quiet. Engagement drops. Donors forget.</p>
+    </div>
+    <div class="pain-card reveal rd1">
+      <span class="pain-q">Sound Familiar?</span>
+      <div class="pain-t">"The grant deadline is in three weeks."</div>
+      <p class="pain-d">You need video proof of impact for a major grant or board update. Fast turnaround. Real production value. Sensitive subjects handled with care. Not everyone can do this work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="offers">
+  <div class="offer-head reveal">
+    <div class="offer-eye">What We Build</div>
+    <h2 class="offer-hl">Three engines<br><em>for the work.</em></h2>
+    <p class="offer-sub">Packages built for the rhythm of nonprofit work &mdash; the annual gala, the donor appeal, the impact report, the year-round content gap.</p>
+  </div>
+  <div class="offer-grid">
+
+    <div class="offer-card reveal">
+      <span class="offer-card-n">01 &middot; Hero Film</span>
+      <div class="offer-card-t">The Annual Impact Film</div>
+      <div class="offer-card-tag">One film that earns the room.</div>
+      <p class="offer-card-d">A cinematic 3&ndash;6 minute hero film for your gala, annual appeal, or major donor moment. Built around real beneficiary stories with the craft of a theatrical short.</p>
+      <ul class="offer-list">
+        <li>Pre-production &amp; story workshop</li>
+        <li>1&ndash;3 day production shoot</li>
+        <li>Original score / licensed music</li>
+        <li>Professional color grade</li>
+        <li>Gala-ready master + social cuts</li>
+      </ul>
+    </div>
+
+    <div class="offer-card reveal rd1">
+      <span class="offer-card-n">02 &middot; Ongoing</span>
+      <div class="offer-card-t">Donor Engagement Engine</div>
+      <div class="offer-card-tag">Stay top-of-mind, year-round.</div>
+      <p class="offer-card-d">Monthly cinematic content built to keep donors connected between major asks. One quarterly shoot day fuels weeks of donor-ready content across email and social.</p>
+      <ul class="offer-list">
+        <li>6&ndash;12 short-form videos / month</li>
+        <li>Email-ready video assets</li>
+        <li>Multi-platform reformatting</li>
+        <li>Quarterly production day</li>
+        <li>Strategy check-in monthly</li>
+      </ul>
+    </div>
+
+    <div class="offer-card reveal rd2">
+      <span class="offer-card-n">03 &middot; Strategic</span>
+      <div class="offer-card-t">Campaign &amp; Grant Films</div>
+      <div class="offer-card-tag">For the moments that matter.</div>
+      <p class="offer-card-d">Targeted films for specific campaigns &mdash; capital raises, grant applications, board reports, anniversary moments. Built fast, built right, built to fit the brief.</p>
+      <ul class="offer-list">
+        <li>Capital campaign films</li>
+        <li>Grant-ready impact reports</li>
+        <li>Beneficiary story films</li>
+        <li>Board / stakeholder updates</li>
+        <li>Anniversary &amp; milestone films</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="process">
+  <div style="text-align:center;max-width:760px;margin:0 auto">
+    <div class="pains-eye reveal">Process</div>
+    <h2 class="pains-hl reveal">How we<br><em>work with you.</em></h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <span class="process-n">01</span>
+      <div class="process-t">Listen</div>
+      <p class="process-d">We start with the mission, the constraints, and what success actually looks like &mdash; not what we want to sell you.</p>
+    </div>
+    <div class="process-step reveal rd1">
+      <span class="process-n">02</span>
+      <div class="process-t">Build the Story</div>
+      <p class="process-d">We work with you to find the human truth at the center of the work &mdash; the story donors will remember.</p>
+    </div>
+    <div class="process-step reveal rd2">
+      <span class="process-n">03</span>
+      <div class="process-t">Produce</div>
+      <p class="process-d">Cinema-grade production with the sensitivity nonprofit work requires. Trauma-informed when needed, always discreet.</p>
+    </div>
+    <div class="process-step reveal rd3">
+      <span class="process-n">04</span>
+      <div class="process-t">Deliver Forward</div>
+      <p class="process-d">Hero film + social cuts + email-ready clips + behind-the-scenes. One shoot, fully distributed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="proof-eye reveal">Pedigree</div>
+  <div class="proof-q reveal">"From the team behind <em>Between Mercy and Me</em> &mdash; reaching 700+ theaters &mdash; and production credits on Angel Studios&rsquo; <em>He Calls Me Daughter</em>."</div>
+  <div class="proof-c reveal">Theatrical-grade craft &middot; Mission-aligned partnership</div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <div class="pains-eye" style="justify-content:center">Common Questions</div>
+      <h2 class="pains-hl">What nonprofits<br><em>usually ask.</em></h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">We're a small org. Can you actually fit our budget?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes. We have packages that start meaningfully below traditional agency rates, and we structure projects so a single production day fuels months of content. We're honest in the first call about whether your budget and goals match &mdash; we don't take projects we can't do well.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">We work with sensitive populations. Can you handle that?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes. We have experience with trauma-informed production, consent workflows, identity protection (silhouettes, voice modulation, composite stories where appropriate), and on-set sensitivity protocols. Beneficiary dignity is non-negotiable on our shoots.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you offer pro bono or discounted nonprofit rates?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">We reserve a small portion of our annual calendar for cause-aligned pro bono and reduced-rate work. Reach out and tell us about the mission &mdash; if it fits, we'll find a way.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can the film be ready for our event in 6 weeks?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Often, yes &mdash; depending on scope. A focused 3-minute impact film with one shoot day can absolutely turn in 6 weeks. A multi-location documentary, no. We'll tell you the truth on the first call.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Will we own the final film?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Yes. You own the finished deliverables outright with full rights to distribute on any platform you choose. We retain rights to use our work in our portfolio &mdash; with your approval on case studies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you provide deliverables for grant applications?<span class="faq-q-icon">+</span></div>
+      <div class="faq-a">Absolutely. Grant-ready video deliverables, impact report assets, board update films, and stakeholder cuts are common formats we build for. Tell us the requirements up front and we'll match them.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2 class="reveal">Your mission deserves<br><em>better storytelling.</em></h2>
+  <p class="reveal">Tell us what you're building. The first call is free and useful even if we end up not being your fit.</p>
+  <a href="/contact.html" class="btn btn-gold reveal" style="margin:0 auto">Start a Conversation &rarr;</a>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function toggleFaq(el){const item=el.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');}
+</script>
+</body>
+</html>

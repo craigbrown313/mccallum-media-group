@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Work — McCallum Media Group</title>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+/* ── SHOWREEL ── */
+.reel-wrap {
+  position: relative; width: 100%; aspect-ratio: 16/9;
+  background: #050505; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.reel-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,#1A3028 0%,#0A0A08 50%,#1A1208 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.reel-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,8,.7) 0%, transparent 50%);
+}
+.play-btn {
+  width: 72px; height: 72px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .3s; z-index: 2; position: relative;
+}
+.play-btn:hover { border-color: var(--teal); background: rgba(45,212,191,.08); transform: scale(1.08); }
+.play-btn svg { margin-left: 4px; }
+.reel-label {
+  position: absolute; bottom: 2rem; left: 6%;
+  font-size: .5rem; letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(245,240,232,.35); z-index: 2;
+}
+
+/* ── PROJECT GRID ── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  gap: 1.25rem;
+}
+.proj { position: relative; overflow: hidden; cursor: pointer; }
+.proj:nth-child(1) { grid-column: span 7; }
+.proj:nth-child(2) { grid-column: span 5; }
+.proj:nth-child(3) { grid-column: span 4; }
+.proj:nth-child(4) { grid-column: span 4; }
+.proj:nth-child(5) { grid-column: span 4; }
+.proj:nth-child(6) { grid-column: span 12; }
+
+.proj-img {
+  width: 100%;
+  background: var(--c, linear-gradient(135deg,#1A3028,#0A0A08));
+  position: relative; overflow: hidden;
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+}
+.proj:nth-child(1) .proj-img { aspect-ratio: 16/10; }
+.proj:nth-child(2) .proj-img { aspect-ratio: 3/4; }
+.proj:nth-child(3) .proj-img,
+.proj:nth-child(4) .proj-img,
+.proj:nth-child(5) .proj-img { aspect-ratio: 4/3; }
+.proj:nth-child(6) .proj-img { aspect-ratio: 21/6; }
+.proj:hover .proj-img { transform: scale(1.04); }
+
+.proj-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,8,.85) 0%, transparent 60%);
+  opacity: 0; transition: opacity .4s;
+}
+.proj:hover .proj-overlay { opacity: 1; }
+
+.proj-tag {
+  position: absolute; top: 1rem; left: 1rem; z-index: 2;
+  font-size: .52rem; letter-spacing: .22em; text-transform: uppercase;
+  padding: .28rem .65rem;
+  background: rgba(10,10,8,.7); border: 1px solid rgba(255,255,255,.08);
+  color: var(--fg);
+}
+.proj-meta { padding: 1rem 0 .5rem; }
+.proj-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; margin-bottom: .3rem; line-height: 1.3; }
+.proj-desc { font-size: .72rem; color: var(--dim); line-height: 1.75; }
+.proj-year { font-size: .6rem; letter-spacing: .16em; color: var(--muted); margin-top: .25rem; }
+
+
+
+@media(max-width:760px){
+  .proj:nth-child(n){ grid-column: span 12; }
+  .proj:nth-child(2) .proj-img { aspect-ratio: 4/5; }
+  .proj:nth-child(6) .proj-img { aspect-ratio: 16/9 !important; }
+}
+
+/* ── REAL PROJECT IMAGERY ── */
+.proj-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(.95) brightness(.82);
+  transition: transform .7s cubic-bezier(.16,1,.3,1), filter .6s;
+}
+.proj:hover .proj-photo { filter: saturate(1.02) brightness(.95); }
+.proj-img::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(10,10,8,.55) 0%, transparent 50%);
+  pointer-events: none;
+}
+.proj-cap {
+  font-size: .62rem; letter-spacing: .04em; color: var(--muted);
+  margin-top: .55rem; display: flex; align-items: center; gap: .5rem;
+}
+.proj-cap::before {
+  content: ""; width: 16px; height: 1px;
+  background: var(--teal); opacity: .55; flex-shrink: 0;
+}
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+  <meta name="msapplication-TileColor" content="#11140F">
+  <meta name="msapplication-TileImage" content="/app-tile-512.png">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/index.html" class="nav-logo"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html">Brand Studio</a></li>
+    <li><a href="/technical-studio.html">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero" style="min-height:44vh">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 50%,rgba(31,77,58,.18) 0%,transparent 65%);pointer-events:none"></div>
+  <div class="page-hero-inner reveal">
+    <div class="eyebrow">Portfolio</div>
+    <h1 class="hero-hl">Selected<br><em>Work</em></h1>
+    <p class="hero-sub">Cinematic stories, brand films, and content systems built for organizations that refuse to blend in.</p>
+  </div>
+</div>
+
+<!-- SHOWREEL -->
+<div class="reel-wrap">
+  <div class="reel-placeholder">
+    <!--
+      ADD YOUR REEL VIDEO:
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.7)">
+        <source src="YOUR_REEL_URL.mp4" type="video/mp4"/>
+      </video>
+    -->
+    <div class="play-btn" onclick="alert('Connect your Vimeo or YouTube embed here')">
+      <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><polygon points="0,0 20,11 0,22" fill="rgba(245,240,232,.6)"/></svg>
+    </div>
+  </div>
+  <div class="reel-overlay"></div>
+  <div class="reel-label">Showreel 2024 — McCallum Media Group</div>
+</div>
+
+<!-- PROJECT GRID -->
+<section class="section border-b">
+  <div class="eyebrow reveal" style="margin-bottom:2.5rem">Projects</div>
+  <div class="project-grid">
+
+    <div class="proj reveal">
+      <div class="proj-img" style="--c:linear-gradient(135deg,#1A3028 0%,#080E08 100%)">
+        <img class="proj-photo" src="/img/projects/night-exterior-shoot.jpg"
+             alt="Night exterior production — softbox key light, crew, and cinematographer in silhouette"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Documentary</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">Beneath the Watershed</div>
+        <div class="proj-desc">A faith-based nonprofit needed to communicate their conservation mission. We produced a 24-minute documentary that drove a 40% increase in donor engagement.</div>
+        <div class="proj-cap">On location — night exterior production</div>
+        <div class="proj-year">2024 — Documentary Film</div>
+      </div>
+    </div>
+
+    <div class="proj reveal rd1">
+      <div class="proj-img" style="--c:linear-gradient(160deg,#2A1A08 0%,#100A04 100%)">
+        <img class="proj-photo" src="/img/projects/street-drummer-shoot.jpg"
+             alt="Field production for a live street performance — camera monitor and the wider scene"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Brand Film</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">Ember — Brand Story</div>
+        <div class="proj-desc">A premium goods brand needed a launch film that felt distinct. We built a visual identity through cinematic storytelling, not advertising.</div>
+        <div class="proj-cap">Field production — live performance capture</div>
+        <div class="proj-year">2024 — Commercial</div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-img" style="--c:linear-gradient(135deg,#0F1520 0%,#060810 100%)">
+        <img class="proj-photo" src="/img/projects/field-shoot-sunset.jpg"
+             alt="Golden-hour field shoot with an ARRI cinema camera on a handheld body rig"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Feature Film</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">Stillwater</div>
+        <div class="proj-desc">An independent feature exploring identity and faith, produced end-to-end with our core team. Currently in festival circuit.</div>
+        <div class="proj-cap">Golden-hour cinematography, handheld rig</div>
+        <div class="proj-year">2023 — Feature Film</div>
+      </div>
+    </div>
+
+    <div class="proj reveal rd1">
+      <div class="proj-img" style="--c:linear-gradient(135deg,#1A1208 0%,#0A0805 100%)">
+        <img class="proj-photo" src="/img/projects/onset-cafe-set.jpg"
+             alt="Multi-camera location setup on a sidewalk café set with a field monitor"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Content System</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">Parallax Campaign</div>
+        <div class="proj-desc">A ministry needed weekly social content without a weekly production budget. We built an AI-assisted content system delivering 12 pieces per month.</div>
+        <div class="proj-cap">Multi-camera setup on a location shoot</div>
+        <div class="proj-year">2023 — Content Series</div>
+      </div>
+    </div>
+
+    <div class="proj reveal rd2">
+      <div class="proj-img" style="--c:linear-gradient(135deg,#1A0808 0%,#0A0404 100%)">
+        <img class="proj-photo" src="/img/projects/dp-handheld-interior.jpg"
+             alt="Director of photography operating a handheld camera rig on a dim interior set"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Short Film</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">Meridian</div>
+        <div class="proj-desc">A short narrative commissioned by a nonprofit to tell the story of their community impact. Winner — Regional Film Festival 2022.</div>
+        <div class="proj-cap">Interior coverage — director of photography</div>
+        <div class="proj-year">2022 — Short Film</div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-img" style="--c:linear-gradient(135deg,#0A1410 0%,#050808 100%);aspect-ratio:21/6!important">
+        <img class="proj-photo" src="/img/projects/interior-lighting-setup.jpg"
+             alt="Lighting and camera setup inside a dimly lit interior location"
+             loading="lazy" decoding="async">
+        <div class="proj-overlay"></div>
+        <span class="proj-tag">Brand Campaign</span>
+      </div>
+      <div class="proj-meta">
+        <div class="proj-title">The Long View — 6-Month Content Campaign</div>
+        <div class="proj-desc">A coaching firm needed consistent content that built authority over time. We produced a full editorial strategy and shot 6 months of video content in a single two-day production sprint.</div>
+        <div class="proj-cap">Lighting and camera setup on set</div>
+        <div class="proj-year">2022 — Campaign</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm" style="text-align:center">
+  <div class="eyebrow reveal" style="justify-content:center">Next Steps</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin:.75rem 0 1.5rem">Ready to make<br><span style="font-family:var(--serif);font-style:italic;color:var(--gold)">something great?</span></h2>
+  <a href="/contact.html" class="btn btn-orange reveal" style="margin:0 auto">Start a Project →</a>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

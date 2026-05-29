@@ -1,0 +1,80 @@
+/* ════════════════════════════════════════════════════════════════════
+   SCENE3D — Layer Integration
+   ────────────────────────────────────────────────────────────────────
+   Additive CSS that integrates the Three.js layer (#scene3d-host)
+   without touching global.css. Loaded AFTER global.css.
+═══════════════════════════════════════════════════════════════════ */
+
+/* The 3D canvas sits above body bg but below all section content. */
+#scene3d-host {
+  /* z-index: 1 (set inline); this rule reinforces blending behavior */
+  mix-blend-mode: screen;     /* additive feel — blends with bg colors */
+  will-change: opacity;
+}
+
+/* Lift every major section above the 3D layer so text stays crisp.
+   Sections that already have position:relative don't break — we only
+   add z-index. Sections without position:relative gain it. */
+.hero,
+.manifesto,
+.panels,
+.ai-split,
+.stats-bar,
+.philosophy,
+.who-sec,
+.dual-cta,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── SOLID BACKGROUNDS → SUBTLE TRANSPARENCY ───────────────────
+   Let the 3D layer breathe through stats and philosophy.
+   Hero & AI keep their solid backgrounds (the 3D fades there). */
+.stats-bar {
+  background: rgba(14, 14, 12, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.philosophy {
+  background: linear-gradient(
+    180deg,
+    rgba(31, 77, 58, 0.78) 0%,
+    rgba(31, 77, 58, 0.92) 50%,
+    rgba(31, 77, 58, 0.78) 100%
+  );
+}
+
+/* Manifesto already has no solid bg → 3D shows through naturally. */
+/* Panels each have radial gradient bgs → keep them; 3D fades */
+/* Who-we-serve has no bg → 3D shows through */
+/* Dual-cta has no bg → 3D shows through; halves get bg on hover */
+
+/* ── PARALLAX HINT ON HERO ────────────────────────────────────
+   The 3D module applies transforms via JS; this provides the
+   underlying transition timing for any CSS-driven fallback. */
+.hero-eye, .hero-h1, .hero-sub, .hero-actions {
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+
+/* ── REDUCED MOTION ───────────────────────────────────────────
+   The JS module already detects prefers-reduced-motion and
+   builds smaller particle counts, but we also disable the
+   blend-mode shimmer to be extra-gentle. */
+@media (prefers-reduced-motion: reduce) {
+  #scene3d-host { mix-blend-mode: normal; opacity: 0.6 !important; }
+}
+
+/* ── MOBILE: throttle visual intensity ────────────────────────
+   Smaller screens get reduced opacity to prevent visual overload
+   on already-detailed content. */
+@media (max-width: 720px) {
+  #scene3d-host { opacity: 0.7; }
+}
+
+/* ── PRINT: hide ──────────────────────────────────────────── */
+@media print {
+  #scene3d-host { display: none; }
+}

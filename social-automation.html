@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Social Media Automation — McCallum Media Group</title>
+<meta name="description" content="Done-for-you social media content systems for churches, ministries, and brands. Turn one piece of content into a full month of posts — automatically."/>
+<link rel="stylesheet" href="/css/global.css"/>
+<style>
+
+/* ── PAIN POINTS ── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+.pain-item {
+  padding: 2.5rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 1.25rem; align-items: flex-start;
+}
+.pain-item:nth-child(even) { border-right: none; }
+.pain-item:nth-last-child(-n+2) { border-bottom: none; }
+.pain-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--orange); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: .2rem;
+}
+.pain-icon svg { width: 14px; height: 14px; }
+.pain-text-hl { font-size: .85rem; color: var(--fg); margin-bottom: .4rem; font-weight: 400; }
+.pain-text-sub { font-size: .76rem; color: var(--dim); line-height: 1.8; }
+
+/* ── WORKFLOW VISUAL ── */
+.workflow-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+.workflow-input {
+  padding: 2rem 2.5rem;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  min-width: 220px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.workflow-input-label {
+  font-size: .5rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: .5rem;
+}
+.workflow-input-name {
+  font-family: var(--disp); font-size: 1.4rem;
+  letter-spacing: .04em; color: var(--fg); line-height: 1;
+}
+.workflow-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 1.5rem; color: var(--teal); font-size: 1.2rem;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.workflow-outputs {
+  flex: 1; display: flex; flex-wrap: wrap; padding: .75rem;
+  gap: .5rem; align-content: center;
+}
+.workflow-output-tag {
+  font-size: .52rem; letter-spacing: .16em; text-transform: uppercase;
+  padding: .28rem .65rem;
+  border: 1px solid var(--border); color: var(--muted);
+  transition: border-color .3s, color .3s;
+}
+.workflow-row:hover .workflow-output-tag {
+  border-color: rgba(45,212,191,.3); color: rgba(245,240,232,.6);
+}
+
+/* ── PACKAGES ── */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem;
+}
+.pkg-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  position: relative;
+  display: flex; flex-direction: column;
+  transition: border-color .4s;
+}
+.pkg-card:hover { border-color: rgba(45,212,191,.2); }
+.pkg-card.featured { border-color: var(--teal); }
+.pkg-card.featured::before {
+  content: 'Most Popular';
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  font-size: .46rem; letter-spacing: .24em; text-transform: uppercase;
+  padding: .28rem .8rem; background: var(--teal); color: #000; white-space: nowrap;
+}
+.pkg-tier { font-family: var(--disp); font-size: 1.6rem; letter-spacing: .04em; color: var(--fg); margin-bottom: .35rem; }
+.pkg-price { font-size: .72rem; color: var(--teal); letter-spacing: .1em; margin-bottom: 1rem; }
+.pkg-desc { font-size: .78rem; color: var(--dim); line-height: 1.85; margin-bottom: 1.5rem; flex: 1; }
+.pkg-list { list-style: none; margin-bottom: 1.75rem; }
+.pkg-list li { font-size: .72rem; color: var(--muted); padding: .3rem 0; border-bottom: 1px solid #111; display: flex; align-items: center; gap: .5rem; }
+.pkg-list li:last-child { border-bottom: none; }
+.pkg-list li::before { content:''; display:block; width:12px; height:1px; background:var(--teal); opacity:.5; flex-shrink:0; }
+
+/* ── OUTPUT EXAMPLES ── */
+.output-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.output-item {
+  background: var(--bg2);
+  padding: 2rem 1.5rem;
+}
+.output-platform {
+  font-size: .48rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem;
+}
+.output-platform::before { content:''; display:block; width:14px; height:1px; background:var(--teal); opacity:.55; }
+.output-format { font-family: var(--disp); font-size: 1.2rem; letter-spacing: .04em; color: var(--fg); margin-bottom: .5rem; }
+.output-detail { font-size: .7rem; color: var(--muted); line-height: 1.7; }
+
+/* ── ROI SECTION ── */
+.roi-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.roi-block { padding: 3rem 2.5rem; border-right: 1px solid var(--border); text-align: center; }
+.roi-block:last-child { border-right: none; }
+.roi-num { font-family: var(--disp); font-size: clamp(2.5rem,5vw,4rem); color: var(--teal); line-height: 1; margin-bottom: .5rem; }
+.roi-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+.roi-desc { font-size: .75rem; color: var(--dim); line-height: 1.75; }
+
+/* ── PROCESS ── */
+.sma-process {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.sma-step { padding: 3rem 2.5rem 3rem 0; border-right: 1px solid var(--border); position: relative; }
+.sma-step:last-child { border-right: none; }
+.sma-step:not(:first-child) { padding-left: 2.5rem; padding-right: 0; }
+.sma-step::before { content:''; position:absolute; top:0; left:0; width:26px; height:1px; background:var(--teal); }
+.sma-step:not(:first-child)::before { left:2.5rem; }
+.sma-step-num { font-family:var(--disp); font-size:.65rem; letter-spacing:.22em; color:var(--teal); opacity:.5; margin-bottom:1rem; display:block; }
+.sma-step-name { font-family:var(--disp); font-size:1.4rem; letter-spacing:.04em; line-height:1; color:var(--fg); margin-bottom:.75rem; }
+.sma-step-desc { font-size:.78rem; color:var(--dim); line-height:1.85; }
+
+/* ── INLINE CTA STRIP ── */
+.cta-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+  padding: 2.5rem 3rem;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+}
+.cta-strip-text { font-family: var(--disp); font-size: 1.6rem; letter-spacing: .04em; color: var(--fg); }
+.cta-strip-sub { font-size: .78rem; color: var(--dim); margin-top: .3rem; }
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .pain-grid { grid-template-columns: 1fr; }
+  .pain-item { border-right: none; }
+  .pain-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .pain-item:last-child { border-bottom: none; }
+  .workflow-row { flex-direction: column; }
+  .workflow-input { border-right: none; border-bottom: 1px solid var(--border); min-width: auto; }
+  .workflow-arrow { display: none; }
+  .pkg-grid { grid-template-columns: 1fr; }
+  .output-grid { grid-template-columns: repeat(2,1fr); }
+  .roi-grid { grid-template-columns: 1fr; }
+  .roi-block { border-right: none; border-bottom: 1px solid var(--border); }
+  .roi-block:last-child { border-bottom: none; }
+  .sma-process { grid-template-columns: 1fr; }
+  .sma-step { border-right: none; border-top: 1px solid var(--border); padding: 2.5rem 0; }
+  .sma-step:not(:first-child) { padding-left: 0; }
+  .sma-step::before, .sma-step:not(:first-child)::before { left: 0; }
+  .cta-strip { flex-direction: column; align-items: flex-start; padding: 2rem; }
+}
+</style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#11140F">
+  <meta name="msapplication-TileColor" content="#11140F">
+  <meta name="msapplication-TileImage" content="/app-tile-512.png">
+</head>
+<body data-page="services">
+
+<nav class="nav" id="mainNav">
+  <a href="/index.html" class="nav-logo" aria-label="McCallum Media Group — home"><svg class="nav-logo-mark" width="30" height="30" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="nav-logo-word"><span class="nav-logo-name">McCallum</span><span class="nav-logo-sub">Media Group</span></span></a>
+  <ul class="nav-links">
+    <li><a href="/brand-studio.html" class="active">Brand Studio</a></li>
+    <li><a href="/technical-studio.html">Technical Studio</a></li>
+    <li><a href="/film-production.html">Film Production</a></li>
+    <li><a href="/productions.html">Studio Films</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/contact.html" class="nav-cta">Start Inquiry</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/brand-studio.html"     onclick="closeMenu()">Brand Studio</a>
+  <a href="/technical-studio.html" onclick="closeMenu()">Technical Studio</a>
+  <a href="/film-production.html"  onclick="closeMenu()">Film Production</a>
+  <a href="/productions.html"      onclick="closeMenu()">Studio Films</a>
+  <a href="/about.html"            onclick="closeMenu()">About</a>
+  <a href="/contact.html"          onclick="closeMenu()">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/contact.html" class="btn btn-teal" onclick="closeMenu()">Start Inquiry</a></div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero" style="min-height:55vh">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 70% 40%,rgba(45,212,191,.07) 0%,transparent 60%);pointer-events:none"></div>
+  <div class="page-hero-inner">
+    <div class="eyebrow reveal">Social Media Automation</div>
+    <h1 class="hero-hl reveal">Post every day.<br><em>Work less to do it.</em></h1>
+    <p class="hero-sub reveal">Done-for-you social media content systems for churches, ministries, and mission-driven brands. We turn one piece of content — a sermon, a meeting, a video — into a full month of platform-ready posts. Automatically.</p>
+    <div style="margin-top:2.5rem;display:flex;gap:1.25rem;flex-wrap:wrap" class="reveal">
+      <a href="/contact.html" class="btn btn-orange">See Our Packages →</a>
+      <a href="#workflow" class="btn btn-teal">How It Works</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="section border-b">
+  <div class="eyebrow reveal">The Problem</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:3.5rem">Why most organizations<br>struggle with social media</h2>
+  <div class="pain-grid reveal">
+    <div class="pain-item">
+      <div class="pain-icon"><svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="1" x2="7" y2="13" stroke="#C2612F" stroke-width="1.2"/><line x1="1" y1="7" x2="13" y2="7" stroke="#C2612F" stroke-width="1.2"/></svg></div>
+      <div><div class="pain-text-hl">No consistent posting schedule</div><p class="pain-text-sub">You know you should post more. You just never have the time to actually do it consistently — so it happens in bursts, or not at all.</p></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon"><svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="1" x2="7" y2="13" stroke="#C2612F" stroke-width="1.2"/><line x1="1" y1="7" x2="13" y2="7" stroke="#C2612F" stroke-width="1.2"/></svg></div>
+      <div><div class="pain-text-hl">Content production is a bottleneck</div><p class="pain-text-sub">Every post requires starting from scratch — writing copy, finding images, formatting for each platform. It's a full-time job on top of your real job.</p></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon"><svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="1" x2="7" y2="13" stroke="#C2612F" stroke-width="1.2"/><line x1="1" y1="7" x2="13" y2="7" stroke="#C2612F" stroke-width="1.2"/></svg></div>
+      <div><div class="pain-text-hl">Great content gets posted once and forgotten</div><p class="pain-text-sub">A powerful sermon, a great interview, a moving testimonial — shared once and gone. The same content could reach 10× more people with the right repurposing system.</p></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon"><svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="1" x2="7" y2="13" stroke="#C2612F" stroke-width="1.2"/><line x1="1" y1="7" x2="13" y2="7" stroke="#C2612F" stroke-width="1.2"/></svg></div>
+      <div><div class="pain-text-hl">Every platform needs different formats</div><p class="pain-text-sub">Instagram wants vertical. YouTube wants 16:9. LinkedIn wants text-heavy. Facebook is different again. Reformatting for each platform manually is exhausting.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INLINE CTA -->
+<div class="section-sm border-b" style="background:var(--bg2);padding-top:2.5rem;padding-bottom:2.5rem">
+  <div class="cta-strip reveal">
+    <div>
+      <div class="cta-strip-text">Stop creating from scratch every week.</div>
+      <div class="cta-strip-sub">Let's build a system that does it for you.</div>
+    </div>
+    <a href="/contact.html" class="btn btn-orange" style="flex-shrink:0">Get Started →</a>
+  </div>
+</div>
+
+<!-- WORKFLOW VISUAL -->
+<section class="section border-b" id="workflow">
+  <div class="eyebrow reveal">How It Works</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:.75rem">One input. Many outputs.</h2>
+  <p class="reveal" style="color:var(--dim);font-size:.9rem;line-height:1.85;max-width:560px;margin-bottom:3.5rem">This is the core principle behind every system we build. One piece of high-quality source content becomes a full calendar of platform-optimized posts. Automatically.</p>
+
+  <div class="reveal">
+    <div class="workflow-row">
+      <div class="workflow-input">
+        <div class="workflow-input-label">Input</div>
+        <div class="workflow-input-name">Sunday Sermon</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-outputs">
+        <span class="workflow-output-tag">3 × Short Clips (60s)</span>
+        <span class="workflow-output-tag">Reels Caption + Hooks</span>
+        <span class="workflow-output-tag">Weekly Devotional Email</span>
+        <span class="workflow-output-tag">Quote Graphics (5)</span>
+        <span class="workflow-output-tag">YouTube Full Upload</span>
+        <span class="workflow-output-tag">Shorts (3 × 60s)</span>
+        <span class="workflow-output-tag">Facebook Post</span>
+        <span class="workflow-output-tag">Auto-Captions All Formats</span>
+        <span class="workflow-output-tag">Show Notes / Blog</span>
+        <span class="workflow-output-tag">Podcast Export</span>
+      </div>
+    </div>
+
+    <div class="workflow-row">
+      <div class="workflow-input">
+        <div class="workflow-input-label">Input</div>
+        <div class="workflow-input-name">Brand Interview</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-outputs">
+        <span class="workflow-output-tag">5 × Key Moment Clips</span>
+        <span class="workflow-output-tag">LinkedIn Article</span>
+        <span class="workflow-output-tag">Instagram Carousel</span>
+        <span class="workflow-output-tag">Quote Graphics</span>
+        <span class="workflow-output-tag">Email Newsletter Feature</span>
+        <span class="workflow-output-tag">YouTube Chapter Markers</span>
+        <span class="workflow-output-tag">Twitter/X Thread</span>
+        <span class="workflow-output-tag">Vertical Reels Cuts</span>
+      </div>
+    </div>
+
+    <div class="workflow-row">
+      <div class="workflow-input">
+        <div class="workflow-input-label">Input</div>
+        <div class="workflow-input-name">Monthly Planning Session</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-outputs">
+        <span class="workflow-output-tag">30-Day Content Calendar</span>
+        <span class="workflow-output-tag">Scheduled Posting Queue</span>
+        <span class="workflow-output-tag">Evergreen Content Pool</span>
+        <span class="workflow-output-tag">Caption Templates</span>
+        <span class="workflow-output-tag">Hashtag Strategy Per Platform</span>
+        <span class="workflow-output-tag">Analytics Review + Adjustments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTPUT EXAMPLES -->
+<section class="section border-b" style="background:var(--bg2)">
+  <div class="eyebrow reveal">What You Get</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:3.5rem">Content for every platform,<br>built for your audience</h2>
+  <div class="output-grid reveal">
+    <div class="output-item">
+      <div class="output-platform">Instagram & TikTok</div>
+      <div class="output-format">Reels & Shorts</div>
+      <p class="output-detail">Vertical 9:16 clips, 15–90 seconds, auto-captioned, hook-first editing, trending audio guidance. Built to stop the scroll.</p>
+    </div>
+    <div class="output-item">
+      <div class="output-platform">YouTube</div>
+      <div class="output-format">Long & Short Form</div>
+      <p class="output-detail">Full-length uploads with chapters, thumbnails, SEO-optimized titles, descriptions, and timestamps. Plus Shorts from key moments.</p>
+    </div>
+    <div class="output-item">
+      <div class="output-platform">Facebook & LinkedIn</div>
+      <div class="output-format">Feed & Video Posts</div>
+      <p class="output-detail">Platform-native captions, square video formatting, link posts with preview copy, and audience-specific messaging adjustments.</p>
+    </div>
+    <div class="output-item">
+      <div class="output-platform">Email & Website</div>
+      <div class="output-format">Newsletters & Blog</div>
+      <p class="output-detail">Weekly devotionals, digest emails, blog posts, and show notes — all generated from source content in your established voice and tone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROI / VALUE -->
+<section class="section border-b">
+  <div class="eyebrow reveal">The Value</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:4rem">What our clients actually experience</h2>
+  <div class="roi-grid">
+    <div class="roi-block reveal">
+      <div class="roi-num">5×</div>
+      <div class="roi-label">Content Output</div>
+      <p class="roi-desc">Average increase in weekly content pieces published — without adding production days or staff.</p>
+    </div>
+    <div class="roi-block reveal rd1">
+      <div class="roi-num">75%</div>
+      <div class="roi-label">Time Saved</div>
+      <p class="roi-desc">Typical reduction in weekly hours spent on content creation, editing, and scheduling tasks.</p>
+    </div>
+    <div class="roi-block reveal rd2">
+      <div class="roi-num">30+</div>
+      <div class="roi-label">Posts Per Month</div>
+      <p class="roi-desc">Average monthly output for clients on our full automation package — from 1–2 source productions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section border-b" style="background:var(--bg2)">
+  <div class="eyebrow reveal">Packages</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:.75rem">Done-for-you plans</h2>
+  <p class="reveal" style="color:var(--dim);font-size:.9rem;line-height:1.85;max-width:520px;margin-bottom:3.5rem">All packages are monthly retainers. We build your system, run it, and improve it — every single month.</p>
+
+  <div class="pkg-grid">
+    <div class="pkg-card reveal">
+      <div class="pkg-tier">Foundation</div>
+      <div class="pkg-price">From $1,500 / month</div>
+      <p class="pkg-desc">For ministries and small teams just getting started with consistent content. We build the pipeline and handle the basics.</p>
+      <ul class="pkg-list">
+        <li>Up to 8 pieces of content/month</li>
+        <li>2 platforms (Instagram + Facebook)</li>
+        <li>Auto-captioning included</li>
+        <li>Monthly content calendar</li>
+        <li>Sermon clip extraction (2/month)</li>
+      </ul>
+      <a href="/contact.html" class="btn btn-teal" style="align-self:flex-start">Get Started →</a>
+    </div>
+
+    <div class="pkg-card featured reveal rd1">
+      <div class="pkg-tier">Growth</div>
+      <div class="pkg-price">From $3,000 / month</div>
+      <p class="pkg-desc">For organizations ready to show up consistently everywhere their audience is — without doing it manually.</p>
+      <ul class="pkg-list">
+        <li>Up to 20 pieces of content/month</li>
+        <li>4 platforms (Instagram, Facebook, YouTube, LinkedIn)</li>
+        <li>Sermon clip + devotional pipeline</li>
+        <li>Short-form video (Reels/Shorts)</li>
+        <li>Email newsletter draft</li>
+        <li>Monthly performance review</li>
+        <li>Content calendar + scheduling</li>
+      </ul>
+      <a href="/contact.html" class="btn btn-solid" style="align-self:flex-start">Get Started →</a>
+    </div>
+
+    <div class="pkg-card reveal rd2">
+      <div class="pkg-tier">Scale</div>
+      <div class="pkg-price">From $5,000 / month</div>
+      <p class="pkg-desc">Full-service automation for organizations with high content demands — or multiple ministries and brands to manage.</p>
+      <ul class="pkg-list">
+        <li>30+ pieces of content/month</li>
+        <li>All platforms + YouTube SEO</li>
+        <li>Full sermon-to-content pipeline</li>
+        <li>AI-assisted writing in your voice</li>
+        <li>Blog posts + show notes</li>
+        <li>Bi-weekly strategy calls</li>
+        <li>Dedicated content strategist</li>
+        <li>Analytics + monthly reporting</li>
+      </ul>
+      <a href="/contact.html" class="btn btn-teal" style="align-self:flex-start">Get Started →</a>
+    </div>
+  </div>
+  <p class="reveal" style="font-size:.7rem;color:var(--muted);margin-top:2rem;letter-spacing:.08em">All packages include onboarding, workflow setup, and 30-day optimization period. Custom packages available.</p>
+</section>
+
+<!-- PROCESS -->
+<section class="section border-b">
+  <div class="eyebrow reveal">Onboarding</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.2rem,5vw,4rem);margin-bottom:4rem">How we get started</h2>
+  <div class="sma-process">
+    <div class="sma-step reveal">
+      <span class="sma-step-num">01</span>
+      <div class="sma-step-name">Brand Audit</div>
+      <p class="sma-step-desc">We review your existing content, tone of voice, brand guidelines, and audience. Everything we build sounds like you — not a generic AI system.</p>
+    </div>
+    <div class="sma-step reveal rd1">
+      <span class="sma-step-num">02</span>
+      <div class="sma-step-name">Pipeline Build</div>
+      <p class="sma-step-desc">We set up your automation workflow, connect your platforms, and build the templates. This takes 7–10 days and you approve everything before it goes live.</p>
+    </div>
+    <div class="sma-step reveal rd2">
+      <span class="sma-step-num">03</span>
+      <div class="sma-step-name">First Month Live</div>
+      <p class="sma-step-desc">Your pipeline runs. We monitor, tweak, and optimize based on what's performing. You review a content approval queue once per week — usually takes 15 minutes.</p>
+    </div>
+    <div class="sma-step reveal rd3">
+      <span class="sma-step-num">04</span>
+      <div class="sma-step-name">Ongoing Growth</div>
+      <p class="sma-step-desc">Monthly performance reviews. We adjust based on data — what's working, what isn't, where to double down. The system gets smarter every month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-sm" style="text-align:center;background:var(--green)">
+  <div class="eyebrow reveal" style="justify-content:center;color:rgba(245,240,232,.5)">Ready to Start</div>
+  <h2 class="disp reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin:.75rem 0 1.5rem">Stop starting from scratch<br><span style="font-family:var(--serif);font-style:italic;color:var(--gold)">every single week.</span></h2>
+  <p class="reveal" style="color:rgba(245,240,232,.5);font-size:.9rem;line-height:1.8;max-width:440px;margin:0 auto 2.5rem">Book a free strategy call. We'll look at your current content output and show you exactly what a system could look like for your organization.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
+    <a href="/contact.html" class="btn btn-solid">Book a Free Call →</a>
+    <a href="/ai-consulting.html" class="btn btn-teal">See AI Consulting →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="footer-logo-mark" width="24" height="24" viewBox="-185 -120 370 240" aria-hidden="true"><ellipse cx="0" cy="0" rx="142" ry="58" fill="none" stroke="#2DD4BF" stroke-width="4" opacity="0.55" transform="rotate(-22)"/><circle cx="0" cy="0" r="82" fill="none" stroke="#2DD4BF" stroke-width="8"/><path d="M-46 48 L-46 -46 L0 2 L46 -46 L46 48" fill="none" stroke="#2DD4BF" stroke-width="17" stroke-linejoin="round" stroke-linecap="round"/><circle cx="135" cy="-55" r="13" fill="#E9B85A"/></svg><span class="footer-logo-txt">McCallum <em>Media Group</em></span></div>
+  <div class="footer-links">
+    <a href="/brand-studio.html">Brand Studio</a>
+    <a href="/technical-studio.html">Technical Studio</a>
+    <a href="/film-production.html">Film Production</a>
+    <a href="/productions.html">Studio Films</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2024 McCallum Media Group</div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('hamburger').classList.toggle('open',menuOpen);document.getElementById('mobileMenu').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
